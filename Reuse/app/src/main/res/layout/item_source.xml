@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
+    app:cardCornerRadius="2dp"
+    app:cardUseCompatPadding="true"
+    app:elevation="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_source_logo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:id="@+id/tv_source_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_source_logo"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:lines="2"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_source_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_source_name"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.headlines.HeadlinesActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:onClick="onCvBrowseNewsClicked"
+                android:id="@+id/iv_open_browse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:src="@drawable/ic_action_browse" />
+
+            <ImageView
+                android:onClick="onIvOpenSearchClicked"
+                android:id="@+id/iv_open_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:src="@drawable/ic_action_search" />
+
+            <TextView
+                android:id="@+id/tv_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_open_search"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:text="@string/app_name"
+                android:textColor="@color/colorPrimary"
+                android:textSize="55sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/rl_articles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_logo"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                <ProgressBar
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/pb_articles"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_articles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_browse_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_articles"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:background="@color/cardview_light_background"
+                android:onClick="onCvBrowseNewsClicked"
+                app:cardCornerRadius="2dp"
+                app:cardUseCompatPadding="true"
+                app:elevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:clickable="false"
+                        android:src="@drawable/ic_arrow_forward" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:clickable="false"
+                        android:text="do Browser"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>
