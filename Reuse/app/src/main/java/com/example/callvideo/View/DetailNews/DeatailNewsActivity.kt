@@ -59,7 +59,7 @@ class DeatailNewsActivity : AppCompatActivity() {
         var temp:String=""
         val output = article.content.toString().split("\\ ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         for (i in output.indices) {
-            temp=temp+"["+output[i]+"]"
+            temp=temp+" "+output[i]+" "
             txtContent.text = temp
             //txtDemo.setText(Arrays.toString(output))
             txtContent.setMovementMethod(LinkMovementMethod.getInstance());
@@ -82,11 +82,11 @@ class DeatailNewsActivity : AppCompatActivity() {
     private fun addClickablePart(str: String): SpannableStringBuilder {
         val ssb = SpannableStringBuilder(str)
 
-        var startIdx = str.indexOf("[")
+        var startIdx = str.indexOf(" ")
         var endIdx = 0
         while (startIdx != -1) {
-            endIdx = str.indexOf("]", startIdx)
-
+            endIdx = str.indexOf(" ", startIdx+1)
+            // because endIdx can be confused " " from startIdx when it end at last index in element
             val clickString = str.substring(startIdx+1, endIdx)
             ssb.setSpan(object : ClickableSpan() {
 
@@ -100,7 +100,8 @@ class DeatailNewsActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }, startIdx+1, endIdx, 0)
-            startIdx = str.indexOf("[", endIdx)
+            startIdx = str.indexOf(" ", endIdx+1)
+            // avoid startIdx confused " " from endIdx when it start at new element at idx[0]
         }
 
         return ssb

@@ -1,5 +1,11 @@
 package com.example.callvideo.Presenter.Translation;
 
+import android.content.Intent;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.callvideo.R;
 import com.example.callvideo.Service.APIHelper;
 import com.example.callvideo.Service.Client;
 import com.example.callvideo.Model.Entities.Languages;
@@ -31,7 +37,6 @@ public class Translate {
             noTranslate = false;
             return;
         }
-
         String APIKey = "trnsl.1.1.20170314T200256Z.c558a20c3d6824ff.7" +
                 "860377e797dffcf9ce4170e3c21266cbc696f08";
         String language1 = spinnerMap.get("spinner1").toString();
@@ -67,5 +72,22 @@ public class Translate {
         DatabaseReference wordRef= FirebaseDatabase.getInstance().getReference("Word");
         wordRef.push().setValue(wordMap);
         iTranslateListener.onSetFavorite("Đã thêm vào sổ tay từ vựng");
+    }
+    public void speakOut(HashMap<String,Object>inputMap) {
+        String txtMessage=inputMap.get("translatedText").toString();
+        String mLanguageCodeTo=inputMap.get("languageCode").toString();
+        TextToSpeech mTextToSpeech= (TextToSpeech) inputMap.get("textToSpeech");
+        HashMap<String, String> map = new HashMap<>();
+        int result = mTextToSpeech.setLanguage(new Locale(mLanguageCodeTo));
+        Log.e("Inside", "speakOut " + mLanguageCodeTo + " " + result);
+        if (result == TextToSpeech.LANG_MISSING_DATA) {
+            iTranslateListener.onMissedPackage("Language package is missing");
+        } else if (result == TextToSpeech.LANG_NOT_SUPPORTED) {
+            //Toast.makeText(getApplicationContext(),getString(R.string.language_not_supported), Toast.LENGTH_SHORT).show();
+            iTranslateListener.onNotSupport("This language isn't support");
+        } else {
+            map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "UniqueID");
+            mTextToSpeech.speak(txtMessage, TextToSpeech.QUEUE_FLUSH, map);
+        }
     }
 }

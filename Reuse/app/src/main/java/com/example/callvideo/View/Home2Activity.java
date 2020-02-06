@@ -169,8 +169,9 @@ public class Home2Activity extends AppCompatActivity
             finish();
         } else if (id == R.id.nav_feedback) {
             Uri uri = Uri.parse("https://forms.gle/uKm5YsnwTdje7sFf6");
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+            //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            Intent signIn = new Intent(Home2Activity.this, TranslationActivity.class);
+            startActivity(signIn);
                 }
          else if (id == R.id.nav_new) {
              Intent intent=new Intent(Home2Activity.this, HeadlinesActivity.class);

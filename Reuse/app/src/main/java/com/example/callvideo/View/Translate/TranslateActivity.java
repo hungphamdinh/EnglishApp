@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TranslateActivity extends AppCompatActivity {
-    private   BottomNavigationView bottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
     private String userPhone;
     private String wordTranslate;
     private ArrayList<String>listData;

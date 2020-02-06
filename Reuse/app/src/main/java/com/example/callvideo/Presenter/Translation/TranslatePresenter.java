@@ -17,6 +17,9 @@ public class TranslatePresenter implements ITranslateListener{
     public void onTranslate(String translateTest, HashMap<String,Object>spinnerMap){
         mainInterator.textChangedListener(translateTest,spinnerMap);
     }
+    public void speakOut(HashMap<String,Object>inputMap){
+        mainInterator.speakOut(inputMap);
+    }
     public void onSetToFavourite(HashMap<String,Object>favorMap){
         mainInterator.setTextToFirebase(favorMap);
     }
@@ -28,5 +31,15 @@ public class TranslatePresenter implements ITranslateListener{
     @Override
     public void onSetFavorite(String mssg) {
         translateView.onSetFavorite(mssg);
+    }
+
+    @Override
+    public void onMissedPackage(String msg) {
+        translateView.onMissedPackage(msg);
+    }
+
+    @Override
+    public void onNotSupport(String msg) {
+        translateView.onNotSupport(msg);
     }
 }
