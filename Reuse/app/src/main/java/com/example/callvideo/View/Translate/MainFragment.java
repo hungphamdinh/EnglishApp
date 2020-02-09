@@ -90,23 +90,7 @@ public class MainFragment extends Fragment implements ITranslateView,TextToSpeec
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.main_fragment, container, false);
-        spinner1 = (Spinner) rootView.findViewById(R.id.languages1);
-        spinner2 = (Spinner) rootView.findViewById(R.id.languages2);
-        txtToTranslate = (EditText) rootView.findViewById(R.id.textToTranslate);
-        txtToTranslate.setMovementMethod(new ScrollingMovementMethod());
-        txtToTranslate.setVerticalScrollBarEnabled(true);
-        btnChangeLanguages = (ImageButton) rootView.findViewById(R.id.changeLanguages);
-        btnAddToFavourites = (ImageButton) rootView.findViewById(R.id.addToFavourites1);
-        btnTranslate=(Button)rootView.findViewById(R.id.btnTranslate);
-        txtTranslated = (TextView) rootView.findViewById(R.id.translatedText);
-        btnSpeakOut=(ImageView) rootView.findViewById(R.id.btnSpeakOut);
-        btnListen=(ImageView)rootView.findViewById(R.id.btnListen);
-        txtTranslated.setMovementMethod(new ScrollingMovementMethod());
-        txtTranslated.setVerticalScrollBarEnabled(true);
-        translatePresenter=new TranslatePresenter(this);
-        txtToTranslate.setText(wordTranslate);
-        // setArgs();
-        btnSpeakOut.setEnabled(false);
+
         return rootView;
     }
     @Override
@@ -160,6 +144,23 @@ public class MainFragment extends Fragment implements ITranslateView,TextToSpeec
      */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        spinner1 = (Spinner) rootView.findViewById(R.id.languages1);
+        spinner2 = (Spinner) rootView.findViewById(R.id.languages2);
+        txtToTranslate = (EditText) rootView.findViewById(R.id.textToTranslate);
+        txtToTranslate.setMovementMethod(new ScrollingMovementMethod());
+        txtToTranslate.setVerticalScrollBarEnabled(true);
+        btnChangeLanguages = (ImageButton) rootView.findViewById(R.id.changeLanguages);
+        btnAddToFavourites = (ImageButton) rootView.findViewById(R.id.addToFavourites1);
+        btnTranslate=(Button)rootView.findViewById(R.id.btnTranslate);
+        txtTranslated = (TextView) rootView.findViewById(R.id.translatedText);
+        btnSpeakOut=(ImageView) rootView.findViewById(R.id.btnSpeakOut);
+        btnListen=(ImageView)rootView.findViewById(R.id.btnListen);
+        txtTranslated.setMovementMethod(new ScrollingMovementMethod());
+        txtTranslated.setVerticalScrollBarEnabled(true);
+        translatePresenter=new TranslatePresenter(this);
+        txtToTranslate.setText(wordTranslate);
+        // setArgs();
+        btnSpeakOut.setEnabled(false);
         setSpinners();
         swapLanguage();
         onClickTranslate();

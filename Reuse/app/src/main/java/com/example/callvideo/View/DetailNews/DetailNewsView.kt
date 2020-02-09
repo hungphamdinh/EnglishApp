@@ -1,10 +1,13 @@
 package com.example.callvideo.View.DetailNews
 
-import com.example.callvideo.Model.Article
+import android.text.SpannableStringBuilder
 
 interface DetailNewsView {
-
-    fun insertListArticles(data: List<Article>?)
-    fun loadingData(isNotFinished: Boolean)
-
+//
+//    fun insertListArticles(data: List<Article>?)
+//    fun loadingData(isNotFinished: Boolean)
+    fun getContent(content: SpannableStringBuilder)
+    fun getTitle(title:String)
+    fun getSource(source:String)
+    fun getClickString(map: HashMap<String, Any>)
 }

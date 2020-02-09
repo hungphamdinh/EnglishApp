@@ -110,6 +110,7 @@
         <activity
             android:name=".Sinch.PlaceCallActivity"
             android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
